@@ -142,7 +142,7 @@ Try {
 
 		## <Perform Installation tasks here>
 
-		$exitCode = Execute-Process -Path "VirtualBox-${appVersion}.exe" -Parameters "--msiparams INSTALLDIR=C:\VirtualBox" -WindowStyle "Hidden" -PassThru
+		$exitCode = Execute-Process -Path "VirtualBox-${appVersion}.exe" -Parameters "--msiparams INSTALLDIR=C:\VirtualBox --silent" -WindowStyle "Hidden" -PassThru
 		If (($exitCode.ExitCode -ne "0") -and ($mainExitCode -ne "3010")) { $mainExitCode = $exitCode.ExitCode }
         
         ##$exitCode = Execute-Process -Path "Setup.exe" -Parameters "/v`"/qn REBOOT=reallysuppress`"" -WindowStyle "Hidden" -PassThru
@@ -159,7 +159,7 @@ Try {
 
 		## <Perform Post-Installation tasks here>
 
-		Copy-File -Path "$dirFiles\Oracle VMs" -Destination "C:\" -Recurse
+		##Copy-File -Path "$dirFiles\Oracle VMs" -Destination "C:\" -Recurse
 
 		## Display a message at the end of the install
 		If (-not $useDefaultMsi) {
@@ -197,6 +197,7 @@ Try {
 
 		Execute-MSI -Action "Uninstall" -Path "{F96A4E32-02CB-40E9-91C1-EE679237E107}"
 
+
 		##*===============================================
 		##* POST-UNINSTALLATION
 		##*===============================================
@@ -204,7 +205,7 @@ Try {
 
 		## <Perform Post-Uninstallation tasks here>
 
-
+		##Remove-Folder -Path "C:\Oracle VMs"
 	}
 
 	##*===============================================
