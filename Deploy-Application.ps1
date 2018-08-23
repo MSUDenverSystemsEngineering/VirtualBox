@@ -159,7 +159,7 @@ Try {
 
 		## <Perform Post-Installation tasks here>
 
-		##Copy-File -Path "$dirFiles\Oracle VMs" -Destination "C:\" -Recurse
+		Copy-File -Path "$dirFiles\Oracle VMs" -Destination "C:\" -Recurse
 
 		## Display a message at the end of the install
 		If (-not $useDefaultMsi) {
@@ -205,7 +205,7 @@ Try {
 
 		## <Perform Post-Uninstallation tasks here>
 
-		##Remove-Folder -Path "C:\Oracle VMs"
+		Remove-Folder -Path "C:\Oracle VMs"
 	}
 
 	##*===============================================
